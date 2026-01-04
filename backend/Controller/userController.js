@@ -7,18 +7,15 @@ const userController = {
         if (!name || !email) {
             return res.status(400).json({ message: "Name and email are required" });
         }
-
         // Check if email already exists
         userModel.findByEmail(email, (err, result) => {
             if (err) {
                 console.error("Database Error:", err);
                 return res.status(500).json({ message: "Database error" });
             }
-
             if (result.length > 0) {
                 return res.status(400).json({ message: "User already registered" });
             }
-
             // Insert user
             userModel.createUser({ name, designation, email, phone, address }, (err) => {
                 if (err) {

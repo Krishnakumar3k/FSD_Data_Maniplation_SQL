@@ -27,7 +27,7 @@ const Home = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="container mt-4">
+        <div className="container-fluid mt-4">
             <div className="d-flex justify-content-between align-items-center mb-4">
                 <h3 className="fw-bold text-primary">User Records</h3>
                 <button
