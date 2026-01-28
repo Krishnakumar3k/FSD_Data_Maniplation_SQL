@@ -13,11 +13,11 @@ const RegisterForm = () => {
     });
 
     // Function: Handle input changes (update state dynamically based on name attribute)
-    const setdata = (e) => {
-        const { name, value } = e.target;
+    const setdata = (event) => {
+        const { name, value } = event.target;
         setinputval((preval) => ({
-            ...preval,      // Keep previous values
-            [name]: value,  // Update only the changed field
+            ...preval,      // spread operator to keep previous values
+            [name]: value,  // update only the changed field 
         }));
     };
 
@@ -36,7 +36,7 @@ const RegisterForm = () => {
             const { name, designation, email, phone, address } = inputval;
 
             // Send POST request to backend API with form data
-            const response = await axios.post("http://localhost:8080/api/create", {
+            const addData = await axios.post("http://localhost:8080/api/create", {
                 name,
                 designation,
                 email,
@@ -45,7 +45,7 @@ const RegisterForm = () => {
             });
 
             // Show success message returned by the backend
-            alert(response.data.message || "User registered successfully!");
+            alert(addData.data.message || "User registered successfully!");
 
             // Reset form fields after successful registration
             setinputval({
@@ -57,8 +57,8 @@ const RegisterForm = () => {
             });
         } catch (error) {
             // Catch network or server errors and display them
-            console.error("Error creating user:", error.response?.data || error.message);
-            alert(error.response?.data?.message || "Failed to register user!");
+            console.error("Error creating user:", error.addData?.data || error.message);
+            alert(error.addData?.data?.message || "Failed to register user!");
         }
     };
 

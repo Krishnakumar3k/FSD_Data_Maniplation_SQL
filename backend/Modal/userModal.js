@@ -1,4 +1,3 @@
-const e = require('express');
 const connection = require('../db/dbconnection');
 
 const userModel = {
@@ -8,6 +7,8 @@ const userModel = {
 
     createUser: (userData, callback) => {
         connection.query("INSERT INTO users SET ?", userData, callback);
+        
+        
     },
 
 
@@ -20,7 +21,24 @@ const userModel = {
             }
             callback(null, result);
         });
-    }
+    },
+
+//  UPDATE USER (THIS WAS MISSING)
+  updateUser: (id, userData, callback) => {
+    connection.query(
+      "UPDATE users SET ? WHERE id = ?",
+      [userData, id],
+      (err, result) => {
+        if (err) {
+          return callback(err);
+        }
+        callback(null, result);
+      }
+    );
+  }
+
+
+
 };
 
 

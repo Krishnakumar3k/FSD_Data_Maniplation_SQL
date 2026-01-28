@@ -1,51 +1,93 @@
 import React from "react";
-import CreateIcon from '@mui/icons-material/Create';
-import DeleteIcon from '@mui/icons-material/Delete';
-import Card from '@mui/material/Card';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import WorkIcon from '@mui/icons-material/Work';
-import CardContent from '@mui/material/CardContent';
-import PhoneIcon from '@mui/icons-material/Phone';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import img from './images/profile.png';
+import {
+  Card,
+  CardContent,
+  Avatar,
+  IconButton,
+  Divider,
+  Box,
+  Typography
+} from "@mui/material";
+
+import CreateIcon from "@mui/icons-material/Create";
+import DeleteIcon from "@mui/icons-material/Delete";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import WorkIcon from "@mui/icons-material/Work";
+import PhoneIcon from "@mui/icons-material/Phone";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+
+import img from "./images/profile.png";
 
 const DataDetailView = () => {
-    return (
-        <>
-            <div className="container mt-3">
-                <h1 style={{ "fontWeight": "400" }}>User Detailes</h1>
-                <Card sx={{ maxWidth: 600 }}>
+  return (
+    <div className="container mt-4">
+      <Typography variant="h5" fontWeight={500} mb={2}>
+        User Details
+      </Typography>
 
-                    <CardContent>
-                        <div className="add-btn">
-                                    <button className="btn btn-primary text-nowrap me-2">
-                                        <CreateIcon />
-                                    </button>
-                                    <button className="btn btn-danger text-nowrap">
-                                        <DeleteIcon />
-                                    </button></div>
-                        <div className="row">
-                            <div className="left-view col-lg-6 col-md-6 col-12">
-                                <img src={img} alt="Profile" style={{ width: 50 }} className="img-fluid rounded-circle mb-3" />
-                                <h3>Id: <span style={{ fontWeight: "400" }}>1</span></h3>
-                                <h3 className="mt-3">Name : <span style={{ fontWeight: "400" }}>Krishna Kumar</span></h3>
-                                <p> <WorkIcon /> Designation: <span style={{ fontWeight: "400" }}>Software Engineer</span></p>
-                                <p> <MailOutlineIcon /> Email: <span style={{ fontWeight: "400" }}>krishna@example.com</span></p>
+      <Card
+        sx={{
+          maxWidth: 650,
+          borderRadius: 3,
+          boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+          p: 1
+        }}
+      >
+        <CardContent>
+          {/* Header */}
+          <Box display="flex" justifyContent="space-between" alignItems="center">
+            <Box display="flex" alignItems="center" gap={2}>
+              <Avatar src={img} sx={{ width: 56, height: 56 }} />
+              <Box>
+                <Typography variant="h6">Krishna Kumar</Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Software Engineer
+                </Typography>
+              </Box>
+            </Box>
 
-                            </div>
-                            <div className="right-view col-lg-6 col-md-6 col-12">
-                                
-                                <p className="mt-5"> <PhoneIcon /> Phone: <span style={{ fontWeight: "400" }}>123-456-7890</span></p>
-                                <p className="mt-5"> <LocationOnIcon /> Address: <span style={{ fontWeight: "400" }}>India</span></p>
+            <Box>
+              <IconButton color="primary">
+                <CreateIcon />
+              </IconButton>
+              <IconButton color="error">
+                <DeleteIcon />
+              </IconButton>
+            </Box>
+          </Box>
 
-                            </div>
-                        </div>
-                    </CardContent>
-                </Card>
-            </div>
+          <Divider sx={{ my: 2 }} />
 
-        </>
-    )
-}
+          {/* Details */}
+          <Box display="grid" gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr" }} gap={2}>
+            <Typography>
+              <strong>ID:</strong> 1
+            </Typography>
+
+            <Typography>
+              <WorkIcon fontSize="small" sx={{ mr: 1 }} />
+              Software Engineer
+            </Typography>
+
+            <Typography>
+              <MailOutlineIcon fontSize="small" sx={{ mr: 1 }} />
+              krishna@example.com
+            </Typography>
+
+            <Typography>
+              <PhoneIcon fontSize="small" sx={{ mr: 1 }} />
+              123-456-7890
+            </Typography>
+
+            <Typography>
+              <LocationOnIcon fontSize="small" sx={{ mr: 1 }} />
+              India
+            </Typography>
+          </Box>
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
 
 export default DataDetailView;
